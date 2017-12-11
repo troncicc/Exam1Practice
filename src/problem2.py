@@ -30,7 +30,7 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_problem2a()
+    # run_test_problem2a()
     run_test_problem2b()
 
 
@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,7 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+
     circle.attach_to(window)
 
     rectangle.attach_to(window)
@@ -117,11 +118,12 @@ def problem2a(circle, rectangle, window):
     window.continue_on_mouse_click()
 
     line = rg.Line(rectangle.get_upper_right_corner(), rectangle.get_lower_left_corner())
-
+    line.arrow = 'last'
     line.attach_to(window)
-    window.render()
-    window.continue_on_mouse_click()
+    window.render(1)
 
+    circle.fill_color = rectangle.outline_color
+    window.render()
 
 
 def run_test_problem2b():
@@ -186,7 +188,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -194,6 +196,18 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+    rect.attach_to(win)
+    win.render()
+
+    x1 = rect.get_lower_left_corner().x
+    y1 = rect.get_lower_left_corner().y
+    x2 = rect.get_upper_right_corner().x
+    y2 = rect.get_upper_right_corner().y
+
+    for k in range(n-1):
+        rect2 = rg.Rectangle(rg.Point(x1-delta*(k+1), y1+delta*(k+1)), rg.Point(x2+delta*(k+1), y2-delta*(k+1)) )
+        rect2.attach_to(win)
+    win.render()
 
 
 # ----------------------------------------------------------------------
