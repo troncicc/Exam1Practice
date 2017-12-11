@@ -205,7 +205,7 @@ def problem2b(rect, n, delta, win):
     y2 = rect.get_upper_right_corner().y
 
     for k in range(n-1):
-        rect2 = rg.Rectangle(rg.Point(x1-delta*(k+1), y1+delta*(k+1)), rg.Point(x2+delta*(k+1), y2-delta*(k+1)) )
+        rect2 = rg.Rectangle(rg.Point(x1-delta*(k+1), y1+delta*(k+1)), rg.Point(x2+delta*(k+1), y2-delta*(k+1)))
         rect2.attach_to(win)
     win.render()
 
